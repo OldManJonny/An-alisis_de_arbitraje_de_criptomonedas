@@ -1,0 +1,4 @@
+streamlit==1.X.X
+pandas==1.X.X
+plotly==5.X.X
+numpy==1.X.X
