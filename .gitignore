@@ -1,0 +1,38 @@
+# Datasets originales (muy grandes)
+data/raw/
+
+# Archivos de entorno virtual
+venv/
+env/
+.env/
+
+# Archivos de caché de Python
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+
+# Archivos de distribución
+dist/
+build/
+*.egg-info/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos locales de configuración
+.idea/
+.vscode/
+
+# Archivos grandes (>100MB)
+*.csv.gz
+*.parquet
+*.feather
+*.pickle
+*.pkl
+*.h5
+
+# Archivos específicos que podrían contener datos sensibles
+secrets.yaml
+config.ini
