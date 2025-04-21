@@ -1,0 +1,4 @@
+cryptocurrency,best_pair_by_opportunities,max_opportunities,max_percentage,best_pair_by_avg_spread,max_avg_spread,best_pair_by_max_spread,absolute_max_spread
+BTC,Kucoin-OKX,251866,25.047785174562577,Binance-Kucoin,-10.111507830773864,Binance-OKX,48.50957279075006
+ETH,Coinbase-Kucoin,121876,28.62766837041491,Coinbase-Kucoin,-0.2596681809246604,Coinbase-Kucoin,13.522935779816525
+XRP,Coinbase-Kucoin,86098,21.20891139839193,Coinbase-OKX,0.0240053907759689,Coinbase-OKX,8.318584070796453
