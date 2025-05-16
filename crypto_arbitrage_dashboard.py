@@ -4,6 +4,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import numpy as np
+import os
 
 # Configuración de la página
 st.set_page_config(
@@ -16,10 +17,32 @@ st.set_page_config(
 # Función para cargar datos
 @st.cache_data
 def load_data():
-    crypto_summary = pd.read_csv('crypto_summary.csv')
-    combined_arbitrage = pd.read_csv('combined_arbitrage_summary.csv')
-    best_pairs = pd.read_csv('best_pairs_by_crypto.csv')
-    return crypto_summary, combined_arbitrage, best_pairs
+    # Obtener la ruta del directorio base del proyecto
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    
+    # Construir las rutas a los archivos
+    crypto_summary_path = os.path.join(base_dir, 'data', 'processed', 'crypto_summary.csv')
+    combined_arbitrage_path = os.path.join(base_dir, 'data', 'processed', 'combined_arbitrage_summary.csv')
+    best_pairs_path = os.path.join(base_dir, 'data', 'processed', 'best_pairs_by_crypto.csv')
+    
+    # Cargar los archivos
+    try:
+        crypto_summary = pd.read_csv(crypto_summary_path)
+        combined_arbitrage = pd.read_csv(combined_arbitrage_path)
+        best_pairs = pd.read_csv(best_pairs_path)
+        return crypto_summary, combined_arbitrage, best_pairs
+    except FileNotFoundError as e:
+        # Alternativa: intentar cargar desde rutas relativas
+        try:
+            crypto_summary = pd.read_csv('data/processed/crypto_summary.csv')
+            combined_arbitrage = pd.read_csv('data/processed/combined_arbitrage_summary.csv')
+            best_pairs = pd.read_csv('data/processed/best_pairs_by_crypto.csv')
+            return crypto_summary, combined_arbitrage, best_pairs
+        except FileNotFoundError:
+            st.error(f"No se pudieron encontrar los archivos CSV necesarios. Error: {e}")
+            st.info(f"Buscando en: {crypto_summary_path}")
+            st.info(f"Directorios disponibles: {os.listdir(base_dir)}")
+            raise
 
 # Cargar los datos
 crypto_summary, combined_arbitrage, best_pairs = load_data()
